@@ -12,7 +12,8 @@ router.get('/', function(req, res) {
         'RADIX_CLUSTERNAME': (process.env.RADIX_CLUSTERNAME || 'empty'),
         'RADIX_COMPONENT': (process.env.RADIX_COMPONENT || 'empty'),
         'RADIX_ENVIRONMENT': (process.env.RADIX_ENVIRONMENT || 'empty'),
-        'HOSTNAME': (os.hostname() || 'empty')  
+        'HOSTNAME': (os.hostname() || 'empty'),
+        'HOSTPLATFORM': (os.platform() || '0') 
     };
 
     res.set('Content-Type', 'application/json');

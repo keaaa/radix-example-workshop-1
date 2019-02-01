@@ -30,7 +30,8 @@ router.get('/', function(req, res, next) {
             echoObject.RADIX_CLUSTERNAME = (bodyObj.RADIX_CLUSTERNAME || 'No Radix Clustername?');
             echoObject.RADIX_COMPONENT = (bodyObj.RADIX_COMPONENT || 'No Radix Component?');
             echoObject.RADIX_ENVIRONMENT = (bodyObj.RADIX_ENVIRONMENT || 'No Radix Environment?');
-            echoObject.RADIX_HOSTNAME = (bodyObj.HOSTNAME || 'No Radix Hostname?');
+            echoObject.RADIX_HOSTNAME = (bodyObj.HOSTNAME || 'No hostname');
+            echoObject.RADIX_HOSTPLATFORM = (bodyObj.HOSTPLATFORM || 'No platform');
            
             res.render('echo', { title: 'Echo response', echoObject });
 
