@@ -7,6 +7,9 @@ spec:
     - name: production
       build:
         from: master
+    - name: development
+      build:
+        from: feature1
   components:
     - name: www
       src: ./www
@@ -29,6 +32,11 @@ spec:
             PORT: 3001
             NODE_ENV: "production"
             ECHO_URL: "http://echo:3000"
+        - environment: development
+          variables:
+            PORT: 3001
+            NODE_ENV: "development"
+            ECHO_URL: "http://echo:3000"
     - name: echo
       src: ./echo
       ports:
@@ -49,6 +57,10 @@ spec:
           variables:
             PORT: 3000
             NODE_ENV: "production"
+        - environment: development
+          variables:
+            PORT: 3000
+            NODE_ENV: "development"
   dnsAppAlias:
     environment: production
     component: www
