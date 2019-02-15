@@ -1,39 +1,23 @@
 #
 # -- Base node image with app
 #
-FROM node:10-alpine AS base
-WORKDIR /usr/src/app
-COPY package.json package-lock.json app.js ./
-RUN mkdir -p ./bin ./routes
-COPY bin bin
-COPY routes routes
+FROM node:10-alpine
 
-#
-# -- Dependencies
-#
-FROM base as dependencies
+# Create app directory
 WORKDIR /usr/src/app
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
+
 RUN npm install --only=production
-RUN cp -R node_modules node_modules_production
-RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
 
-#
-# Potentially running test, linting, security check +++
-#
-FROM dependencies as test
-WORKDIR /usr/src/app
-#COPY test test
-#RUN ["npm","test"]
-COPY .eslintrc.json .eslintignore ./
-RUN npm run lint
-RUN npm audit
+# Bundle app source
+COPY . .
 
-#
-# Release image
-#
-FROM base as release
-WORKDIR /usr/src/app
-COPY --from=dependencies /usr/src/app/node_modules_production ./node_modules
 EXPOSE 3000
 ENV NODE_ENV=production
-ENTRYPOINT [ "npm", "start"]
+CMD [ "npm", "start" ]

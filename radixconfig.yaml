@@ -1,15 +1,15 @@
 apiVersion: radix.equinor.com/v1
 kind: RadixApplication
 metadata:
-  name: ws-2rj
+  name: echo
 spec:
   environments:
-    - name: production
+    - name: prod
       build:
         from: master
-    - name: development
+    - name: dev
       build:
-        from: feature1
+        from: develop
   components:
     - name: www
       src: ./www
@@ -23,16 +23,16 @@ spec:
           memory: "64Mi"
           cpu: "100m"
         limits:
-          memory: "96Mi"
+          memory: "256Mi"
           cpu: "200m"
       replicas: 1
       environmentVariables:
-        - environment: production
+        - environment: prod
           variables:
             PORT: 3001
             NODE_ENV: "production"
             ECHO_URL: "http://echo:3000"
-        - environment: development
+        - environment: dev
           variables:
             PORT: 3001
             NODE_ENV: "development"
@@ -49,18 +49,18 @@ spec:
           memory: "64Mi"
           cpu: "100m"
         limits:
-          memory: "96Mi"
+          memory: "256Mi"
           cpu: "200m"
-      replicas: 4
+      replicas: 2
       environmentVariables:
-        - environment: production
+        - environment: prod
           variables:
             PORT: 3000
             NODE_ENV: "production"
-        - environment: development
+        - environment: dev
           variables:
             PORT: 3000
             NODE_ENV: "development"
-  dnsAppAlias:
-    environment: production
-    component: www
+  dnsAppAlias: ## <appname>.apps.radix.equinor.com
+    environment: prod
+    component: www 

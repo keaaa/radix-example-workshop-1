@@ -16,7 +16,7 @@ What does this ting do? It responds to http request on a given port at root (/) 
 
 ## Local node development
 
-Install dependencies
+Install dependencies (npm = node package manager)
 ```
 npm install
 ```
