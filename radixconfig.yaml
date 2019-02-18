@@ -61,6 +61,3 @@ spec:
           variables:
             PORT: 3000
             NODE_ENV: "development"
-  dnsAppAlias: ## <appname>.apps.radix.equinor.com
-    environment: prod
-    component: www 
