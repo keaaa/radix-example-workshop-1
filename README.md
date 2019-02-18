@@ -12,4 +12,3 @@ Purpose - a simple two module app. The public front-end (www) will respond to re
 ![Conseptual diagram](./docs/smalldiagram.png)
 .
 
-Plant WE day rocks!
