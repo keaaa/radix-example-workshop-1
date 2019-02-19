@@ -17,7 +17,7 @@ spec:
        - name: http
          port: 3001
       public: true
-      monitoring: true
+      monitoring: false
       resources:
         requests:
           memory: "64Mi"
@@ -43,7 +43,7 @@ spec:
       - name: http
         port: 3000
       public: false
-      monitoring: true
+      monitoring: false
       resources:
         requests:
           memory: "64Mi"
