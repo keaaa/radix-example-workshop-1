@@ -1,5 +1,13 @@
 # 1. Omnia Radix Workshop 1
 
+Purpose - a simple two module app. The public front-end (www) will respond to requests, request data from the non-public echo module - and echo the data back to the requestor. All magic!
+
+
+* ```echo``` contains the echo module
+* ```www``` contains the www front-end
+
+![Conseptual diagram](../docs/smalldiagram.png)
+
 <!-- /TOC -->
 ## 1.1. Part 1
 
@@ -7,18 +15,18 @@
 
 - Added to radix user AD Group
     - currently: managed by us
-    - in process: accessIt
+    - in process: AccessIt
 - Git installed and working locally against github.com
-    - no other version control supported 
+    - no other version control part of MVP
 - Docker running locally
-    - all users know docker?
+    - How many knows docker?
 - Local dev. environment (IDE++) of your choice
 
 ### 1.1.2. Exploring the Echo app
 
 1. Move into the [echo](../echo/) folder and explore how to develop the Echo app using ```Node.js``` as well as Dockerizing the application.
 
-### 1.1.3. Exploring the Echo app
+### 1.1.3. Exploring the WWW app
 
 1. Move into the [www](../www/) folder and explore how to develop the WWW app using ```Node.js``` as well as Dockerizing the application. 
 

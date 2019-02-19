@@ -1,7 +1,10 @@
 #
 # -- Base node image with app
 #
+# FROM scratch
+# dockerhub.com - offical images
 FROM node:10-alpine
+# available: npm, apt, ..
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -19,5 +22,8 @@ RUN npm install --only=production
 COPY . .
 
 EXPOSE 3000
+# used by express
 ENV NODE_ENV=production
+# command run on docker run
 CMD [ "npm", "start" ]
+# not multistage

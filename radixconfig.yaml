@@ -11,13 +11,37 @@ spec:
       build:
         from: develop
   components:
+    - name: echo
+      src: ./echo
+      ports:
+      - name: http
+        port: 3000
+      public: false
+      monitoring: false
+      resources:
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
+        limits:
+          memory: "256Mi"
+          cpu: "200m"
+      replicas: 4
+      environmentVariables:
+        - environment: prod
+          variables:
+            PORT: 3000
+            NODE_ENV: "production"
+        - environment: dev
+          variables:
+            PORT: 3000
+            NODE_ENV: "development"
     - name: www
       src: ./www
       ports:
        - name: http
          port: 3001
       public: true
-      monitoring: true
+      monitoring: false
       resources:
         requests:
           memory: "64Mi"
@@ -37,30 +61,6 @@ spec:
             PORT: 3001
             NODE_ENV: "development"
             ECHO_URL: "http://echo:3000"
-    - name: echo
-      src: ./echo
-      ports:
-      - name: http
-        port: 3000
-      public: false
-      monitoring: true
-      resources:
-        requests:
-          memory: "64Mi"
-          cpu: "100m"
-        limits:
-          memory: "256Mi"
-          cpu: "200m"
-      replicas: 2
-      environmentVariables:
-        - environment: prod
-          variables:
-            PORT: 3000
-            NODE_ENV: "production"
-        - environment: dev
-          variables:
-            PORT: 3000
-            NODE_ENV: "development"
   dnsAppAlias: ## <appname>.apps.radix.equinor.com
     environment: prod
-    component: www 
+    component: www
