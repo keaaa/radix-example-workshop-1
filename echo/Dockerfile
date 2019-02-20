@@ -1,4 +1,7 @@
-#
+# Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. 
+# Containers allow a developer to package an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package
+# Dockerfile is a definition of how to create a Docker image. 
+# 
 # -- Base node image with app
 #
 # FROM scratch
