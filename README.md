@@ -10,4 +10,4 @@ Purpose - a simple two module app. The public front-end (www) will respond to re
 * ``` docs``` contains the workshop script ([link](./docs/workshop.md))
 
 
-![Conseptual diagram](./docs/smalldiagram.png)
+![Conseptual diagram](./docs/smalldiagram.png) 
